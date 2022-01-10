@@ -99,6 +99,7 @@ const command: CommandInterface = {
       args.index = 'index.html';
     }
 
+    // prep
     const txs = await deploy.prepare(
       dir,
       files,
@@ -111,6 +112,7 @@ const command: CommandInterface = {
       forceRedeploy,
     );
 
+    // show deets
     const balAfter = await showDeployDetails(
       txs,
       wallet,
@@ -127,6 +129,7 @@ const command: CommandInterface = {
       },
     );
 
+    // reject bad tx's
     if (balAfter < 0) {
       console.log(
         useBundler
@@ -156,7 +159,11 @@ const command: CommandInterface = {
       console.log(clc.cyan(ipfsHash.cid));
     }
 
-    const manifestTx: string = await deploy.deploy(isFile, useBundler);
+    // actually deploy
+    const manifestTx: string = await deploy.deploy(
+      isFile,
+      useBundler
+    );
 
     console.log('');
     if (useBundler) {

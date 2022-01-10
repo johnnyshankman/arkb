@@ -92,11 +92,7 @@ export async function showDeployDetails(
       .output();
   }
 
-  const fee = parseInt((deployFee * 0.1).toString(), 10);
-
   const arFee = blockweave.ar.winstonToAr(deployFee.toString());
-  const serviceFee = blockweave.ar.winstonToAr(fee.toString());
-  const totalFee = blockweave.ar.winstonToAr((deployFee + fee).toString());
 
   console.log('');
   console.log(clc.cyan('Summary'));
@@ -113,8 +109,7 @@ export async function showDeployDetails(
   }
 
   console.log(`Total size: ${bytesForHumans(totalSize)}`);
-  console.log(`Fees: ${arFee} + ${serviceFee} (10% arkb fee)`);
-  console.log(`Total fee: ${totalFee}`);
+  console.log(`Total Fees: ${arFee}`);
 
   const addy = await blockweave.wallets.jwkToAddress(wallet);
   let winston: string;
@@ -127,7 +122,7 @@ export async function showDeployDetails(
   }
 
   const bal = blockweave.ar.winstonToAr(winston);
-  const balAfter = +bal - +totalFee;
+  const balAfter = +bal - +arFee;
 
   console.log('');
   console.log(clc.cyan('Wallet'));

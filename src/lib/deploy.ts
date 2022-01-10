@@ -254,55 +254,6 @@ export default class Deploy {
       }
     }
 
-    try {
-      const res = await this.arweave.api.get('cEQLlWFkoeFuO7dIsdFbMhsGPvkmRI9cuBxv0mdn0xU');
-      if (!res || res.status !== 200) {
-        throw new Error('Unable to get cEQLlWFkoeFuO7dIsdFbMhsGPvkmRI9cuBxv0mdn0xU');
-      }
-
-      await this.community.setCommunityTx('cEQLlWFkoeFuO7dIsdFbMhsGPvkmRI9cuBxv0mdn0xU');
-      const target = await this.community.selectWeightedHolder();
-
-      if (target && (await this.blockweave.wallets.jwkToAddress(this.wallet)) !== target) {
-        let fee: number;
-        if (useBundler || this.localBundle) {
-          fee = +this.bundledTx.reward;
-        } else {
-          fee = this.txs.reduce((a, txData) => a + +(txData.tx as Transaction).reward, 0);
-        }
-
-        const quantity = parseInt((fee * 0.1).toString(), 10).toString();
-        if (target.length) {
-          const tx = await this.blockweave.createTransaction(
-            {
-              target,
-              quantity,
-            },
-            this.wallet,
-          );
-
-          let files = `${cTotal} file${isFile ? '' : 's'}`;
-          if (useBundler) {
-            files = `${cTotal} data item${isFile ? '' : 's'}`;
-          }
-
-          let actionMessage = `Deployed ${files} on https://arweave.net/${txid}`;
-          if (this.localBundle) {
-            actionMessage = `Deployed a bundle with ${files}, bundle ID ${this.bundledTx.id} on https://arweave.net/${txid}`;
-          }
-
-          tx.addTag('Action', 'Deploy');
-          tx.addTag('Message', actionMessage);
-          tx.addTag('Service', 'arkb');
-          tx.addTag('App-Name', 'arkb');
-          tx.addTag('App-Version', getPackageVersion());
-
-          await tx.signAndPost();
-        }
-      }
-      // tslint:disable-next-line: no-empty
-    } catch {}
-
     let toDeploy: TxDetail[] = this.txs;
     if (this.localBundle) {
       const hash = await this.toHash(await this.bundle.getRaw());
