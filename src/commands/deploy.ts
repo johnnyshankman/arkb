@@ -160,10 +160,7 @@ const command: CommandInterface = {
     }
 
     // actually deploy
-    const manifestTx: string = await deploy.deploy(
-      isFile,
-      useBundler
-    );
+    const manifestTx: string = await deploy.deploy(isFile, useBundler);
 
     console.log('');
     if (useBundler) {
