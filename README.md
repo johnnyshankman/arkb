@@ -4,33 +4,25 @@ Arweave Deploy that saves you data costs.
 ## Features
 - No file size limit.
 - No amount of files limit.
+- No fees
 - Doesn't upload files that you have already uploaded.
 
 ## How to use
 arkb runs using NodeJS and NPM. You must have both installed on your machine for it to work.
 
-Install arkb:
+
+First put an `arweave.json` file in the root of the repo. Do not commit this.
 
 ```
-yarn global add arkb # recommended
+npm start -- deploy test.svg --wallet arweave.json
 ```
 
-or
-
-```
-npm install -g arkb
-```
-
-> **Note:** The installation of arkb needs node >=15.11.0 or you will get an error when using `arkb`.  To manage multiple active nodejs, we recommend you have [nvm](https://github.com/nvm-sh/nvm) installed on your computer, then you can switch different node in a simple command. 
-
-And run:
-
+If you need help:
 ```
 arkb help
 ```
 
 > **Note:** If you are planning to upload large batches of data transactions to the Arweave network, it is *strongly* advised that you use the `--use-bundler` option instead of regular deploy to avoid transaction failures. You can read about bundles and their advantages on the [Arwiki](https://arwiki.wiki/#/en/preview/WUAtjfiDQEIqhsUcHXIFTn5ZmeDIE7If9hJREBLRgak).
-
 
 
 ```
@@ -76,11 +68,3 @@ wallet-forget (wf)                      Removes a previously saved wallet
 wallet-save (ws) <wallet_path>          Saves a wallet, removes the need of the --wallet option
 withdraw-bundler <amount>               Withdraw from your bundler balance
 ```
-
-## Contributing
-
-1.  Create a fork
-2.  Create your feature branch: `git checkout -b my-feature`
-3.  Commit your changes: `git commit -am 'Add some feature'`
-4.  Push to the branch: `git push origin my-new-feature`
-5.  Submit a pull request 🚀
