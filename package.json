@@ -1,5 +1,5 @@
 {
-  "name": "arkb",
+  "name": "@johnnyshankman/arkb",
   "version": "1.1.47",
   "main": "./bin/app.js",
   "repository": "https://github.com/textury/arkb.git",
