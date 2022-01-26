@@ -12,9 +12,16 @@ arkb runs using NodeJS and NPM. You must have both installed on your machine for
 
 
 First put an `arweave.json` file in the root of the repo. Do not commit this.
+Then put the files you want to upload in the `upload` folder.
 
+Then:
 ```
-npm start -- deploy test.svg --wallet arweave.json
+# newer yarn syntax
+yarn start deploy upload --wallet arweave.json
+
+# legacy yarn syntax
+yarn start -- deploy upload --wallet arweave.json
+
 ```
 
 If you need help:
