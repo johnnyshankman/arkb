@@ -16,15 +16,10 @@ Then put the files you want to upload in the `upload` folder and delete the `.gi
 
 Then:
 ```
-# newer yarn syntax
-yarn start deploy upload --wallet arweave.json
-
-# legacy yarn syntax
-yarn start -- deploy upload --wallet arweave.json
-
+yarn start
 ```
 
-Done!
+Follow the promps and you're done!
 
 If you need help:
 ```

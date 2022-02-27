@@ -12,7 +12,7 @@
     "arkb": "./bin/app.js"
   },
   "scripts": {
-    "start": "node ./bin/app.js",
+    "start": "node ./bin/app.js deploy upload --wallet arweave.json",
     "predev": "yarn build",
     "dev": "node ./bin/app.js",
     "prebuild": "rimraf bin",
