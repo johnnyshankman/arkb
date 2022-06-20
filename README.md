@@ -5,16 +5,18 @@ Arweave Deploy that saves you data costs.
 - No file size limit.
 - No amount of files limit.
 - No fees
-- Doesn't upload files that you have already uploaded.
+- Doesn't deploy files that you have previously deployed to Arweave
+  - Note: I believe you're still charged the same amount, it just optimizes reuploading redundant storage on the network itself to save time during deploys.
 
 ## How to use
 arkb runs using NodeJS and NPM. You must have both installed on your machine for it to work.
 
 
 First put an `arweave.json` file in the root of the repo. Do not commit this.
+
 Then put the files you want to upload in the `upload` folder and delete the `.gitignore` so it is not uploaded to arweave.
 
-Then:
+Finally:
 ```
 yarn start
 ```
