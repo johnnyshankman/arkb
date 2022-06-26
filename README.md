@@ -5,8 +5,8 @@ Arweave Deploy that saves you data costs.
 - No file size limit.
 - No amount of files limit.
 - No fees
-- Doesn't deploy files that you have previously deployed to Arweave
-  - Note: I believe you're still charged the same amount, it just optimizes reuploading redundant storage on the network itself to save time during deploys.
+- Doesn't charge you or redeploy files that you have previously deployed to Arweave
+  - Note: Simply creates a new alias to that same file for you.
 
 ## How to use
 arkb runs using NodeJS and NPM. You must have both installed on your machine for it to work.
