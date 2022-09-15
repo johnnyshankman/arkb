@@ -18,6 +18,9 @@ Then put the files you want to upload in the `upload` folder and delete the `.gi
 
 Finally:
 ```
+# install packages
+yarn
+# deploy files 
 yarn start
 ```
 
